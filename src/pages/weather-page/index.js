@@ -11,67 +11,21 @@ async function getWeather(cityCode) {
     return data
 }
 
-const cityList = [
-    {
-        city: '北京',
-        code: 110000
-    },
-    {
-        city: '上海',
-        code: 310000
-    },
-    {
-        city: '成都',
-        code: 510100
-    },
-    {
-        city: '三沙',
-        code: 460300
-    },
-    {
-        city: '深圳',
-        code: 440300
-    },
-    {
-        city: '厦门',
-        code: 350200
-    },
-    {
-        city: '广州',
-        code: 440100
-    },
-    {
-        city: '重庆',
-        code: 500000
-    },
-    {
-        city: '杭州',
-        code: 330100
-    },
-    {
-        city: '拉萨',
-        code: 540100
-    }
-]
-
 // 天气组件
 export default class WeatherPage extends React.Component {
     constructor(prop) {
         super()
         this.state = {
-            city: 110000,
             weatherInfo: {
                 forecasts: [[]]
             },
+            // currentCity:this.props.globalCurrentCity,
             cachedInfo: {}
         }
     }
     async componentWillMount() {
-        // let weatherInfo = await getWeather()
-        // console.log(weatherInfo)
-        let { city } = this.state
-
-        await this.cityChange(city)
+        // console.log(this.props)
+        await this.cityChange(this.props.city.code)
     }
     componentDidMount() { }
     componentWillUnmount() { }
@@ -98,13 +52,12 @@ export default class WeatherPage extends React.Component {
         }
 
         this.setState({
-            city: newCity,
             weatherInfo: newInfo
         })
     }
 
     render() {
-        let { city, weatherInfo } = this.state
+        let { weatherInfo } = this.state
         let chineseDigi = [
             '〇', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'
         ]
@@ -145,17 +98,8 @@ export default class WeatherPage extends React.Component {
             })
         }
 
-        let cityOptionDOM = cityList.map((item, index) => {
-            return (
-                <option key={index} value={item.code}>{item.city}</option>
-            )
-        })
-
         return (
             <div>
-                <select onChange={this.cityChange} value={city}>
-                    {cityOptionDOM}
-                </select>
                 <section className="weather-app-container">
                     <ul>
                         {forecastDOM}
@@ -164,7 +108,10 @@ export default class WeatherPage extends React.Component {
             </div>
         )
     }
-    // componentWillReceiveProps(nextProps) { }
+    componentWillReceiveProps(nextProps) {
+        // console.log(nextProps.city)
+        this.cityChange(nextProps.city.code)
+    }
     // shouldComponentUpdate(nextProps, nextState) { }
     // componentWillUpdate(nextProps, nextState) { }
     // componentDidUpdate(prevProps, prevState) { }
