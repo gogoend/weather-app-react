@@ -1,6 +1,10 @@
 import React from 'react'
 import { get,post  } from '../../api'
 
+import style from './index.module.css'
+
+console.log(style)
+
 async function getWeather(cityCode) {
     let data = await get('http://restapi.amap.com/v3/weather/weatherInfo', {
         key: '516786aa1da89347ad99cc19c24488ac',
@@ -100,7 +104,7 @@ export default class WeatherPage extends React.Component {
 
         return (
             <div>
-                <section className="weather-app-container">
+                <section className={style['weather-app-container']}>
                     <ul>
                         {forecastDOM}
                     </ul>

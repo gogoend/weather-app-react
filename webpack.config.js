@@ -20,6 +20,11 @@ module.exports = {
         use: {
           loader: 'html-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        // 后面加个?modules表示启用css modules
+        use: [ 'style-loader', 'css-loader?modules' ]
       }
     ]
   },
