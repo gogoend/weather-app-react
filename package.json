@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --mode development",
-    "start1": "react-app-rewired start",
-    "build1": "react-app-rewired build",
-    "test1": "react-app-rewired test --env=jsdom"
+    "start": "webpack-dev-server --open --mode development"
   },
   "author": "gogoend",
   "license": "ISC",
