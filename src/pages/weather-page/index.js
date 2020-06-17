@@ -34,8 +34,6 @@ export default class WeatherPage extends React.Component {
         // console.log(this.props)
         await this.cityChange(this.props.city.code)
     }
-    componentDidMount() { }
-    componentWillUnmount() { }
 
     cacheInfo(city, info) {
         this.state.cachedInfo[city] = {
@@ -68,11 +66,11 @@ export default class WeatherPage extends React.Component {
 
         this.cityChange = this.cityChange.bind(this)
 
-        let forecastDOM = ''
+        let futureForecastDOM = ''
         let todayForecast=''
 
         if (weatherInfo && Array.isArray(weatherInfo.forecasts[0].casts)) {
-            forecastDOM = weatherInfo.forecasts[0].casts.map((item, index) => {
+            futureForecastDOM = weatherInfo.forecasts[0].casts.map((item, index) => {
                 if(index===0){
                     todayForecast = item
                 }else{
@@ -92,17 +90,13 @@ export default class WeatherPage extends React.Component {
                     <MainWeatherInfo weather-info={todayForecast}></MainWeatherInfo>
                 </main>
                     <ul>
-                        {forecastDOM}
+                        {futureForecastDOM}
                     </ul>
                 </section>
             </div>
         )
     }
     componentWillReceiveProps(nextProps) {
-        // console.log(nextProps.city)
         this.cityChange(nextProps.city.code)
     }
-    // shouldComponentUpdate(nextProps, nextState) { }
-    // componentWillUpdate(nextProps, nextState) { }
-    // componentDidUpdate(prevProps, prevState) { }
 }
