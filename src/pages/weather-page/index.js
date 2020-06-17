@@ -82,7 +82,7 @@ export default class WeatherPage extends React.Component {
         }
 
         return (
-            <div>
+            <>
                 <section className={style['weather-app-container']}>
                 <main>
                     <MainWeatherInfo weather-info={todayForecast}></MainWeatherInfo>
@@ -91,7 +91,7 @@ export default class WeatherPage extends React.Component {
                         {futureForecastDOM}
                     </ul>
                 </section>
-            </div>
+            </>
         )
     }
     componentWillReceiveProps(nextProps) {
