@@ -72,7 +72,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>{this.state.globalCurrentCity.code}</h1>
+        <h1>{this.state.globalCurrentCity.city}</h1>
         <section>
           <select onChange={(e)=>this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
             {cityOptionDOM}
