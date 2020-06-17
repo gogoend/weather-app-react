@@ -6,18 +6,14 @@ class SingleWeatherInfo extends React.Component {
         this.state = {}
         this.render()
     }
-    componentWillReceiveProps(nextProps) {
-        this.render()
-    }
     render() {
         let chineseDigi = [
             '〇', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'
         ]
-        console.log(this)
-        if(!this.props){
+        if (!this.props) {
             return ''
         }
-        let  item  = this.props['weather-info']
+        let item = this.props['weather-info']
 
         return (
             <div>
@@ -43,8 +39,12 @@ class SingleWeatherInfo extends React.Component {
                         <li>{item.nightwind}</li>
                         <li>{item.nightpower}级</li>
                     </ul>
-                </section></div>
+                </section>
+            </div>
         )
+    }
+    componentWillReceiveProps(nextProps) {
+        this.render()
     }
 }
 

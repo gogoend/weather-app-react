@@ -1,12 +1,10 @@
 import React from 'react'
 
+import { get,post } from '../../api'
 import SingleWeatherInfo from '../../components/weather-page/single-weather-info'
 import MainWeatherInfo from '../../components/weather-page/main-weather-info'
-import { get,post } from '../../api'
 
 import style from './index.module.css'
-
-console.log(style)
 
 async function getWeather(cityCode) {
     let data = await get('http://restapi.amap.com/v3/weather/weatherInfo', {
@@ -66,7 +64,7 @@ export default class WeatherPage extends React.Component {
 
         this.cityChange = this.cityChange.bind(this)
 
-        let futureForecastDOM = ''
+        let futureForecastDOM = []
         let todayForecast=''
 
         if (weatherInfo && Array.isArray(weatherInfo.forecasts[0].casts)) {
