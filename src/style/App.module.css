@@ -1,0 +1,28 @@
+.app-wrap{
+    min-height:100vh;
+    display:block;
+    /* eslint-disable-next-line */
+    background-image: radial-gradient(100vh 100vh, #3FA3E6 0%,#66D4FF 100%);
+    /* eslint-disable-next-line */
+    /* background-image: radial-gradient(100vh 100vh, #d0d0d0 0%,#7f96a2 100%); */
+    background-size: 100vh 300vh;
+    background-position-y: -50vh;
+    BACKGROUND-POSITION-X: 50%;
+}
+.app-wrap nav .city-select{
+    display:flex;
+    height:0.4rem;
+    padding:0.5em 0;
+}
+.app-wrap nav h1{
+    display:none;
+    margin:0
+}
+.app-wrap nav .city-select select{
+    color:#fff;
+    border:0;
+    background-color:transparent;
+    width:20vw;
+    margin-left:1em;
+    font-size:0.22rem
+}

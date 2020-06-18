@@ -1,6 +1,8 @@
 import React from 'react'
 
 import WeatherPage from './pages/weather-page'
+import './style/reset.css'
+import style from './style/App.module.css'
 
 const cityList = [
   {
@@ -45,9 +47,9 @@ const cityList = [
   }
 ]
 
-function getInfoById(dict,id,field){
-  let result = dict.filter(item=>{
-    return item[field]===id
+function getInfoById(dict, id, field) {
+  let result = dict.filter(item => {
+    return item[field] === id
   })
 
   return result
@@ -57,27 +59,29 @@ class App extends React.Component {
   constructor(prop) {
     super()
     this.state = {
-      globalCurrentCity: getInfoById(cityList,110000,'code')[0]
+      globalCurrentCity: getInfoById(cityList, 110000, 'code')[0]
     }
   }
   globalCityChange(e) {
     let cityCode = Number(e.target.value)
     this.setState({
-      globalCurrentCity: getInfoById(cityList,cityCode,'code')[0]
+      globalCurrentCity: getInfoById(cityList, cityCode, 'code')[0]
     })
   }
   render() {
 
-    let cityOptionDOM = cityList.map((item, index) =>  ( <option key={index} value={item.code}>{item.city}</option> ))
+    let cityOptionDOM = cityList.map((item, index) => (<option key={index} value={item.code}>{item.city}</option>))
 
     return (
-      <div>
-        <h1>{this.state.globalCurrentCity.city}</h1>
-        <section>
-          <select onChange={(e)=>this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
-            {cityOptionDOM}
-          </select>
-        </section>
+      <div className={style['app-wrap']}>
+        <nav>
+          <h1>{this.state.globalCurrentCity.city}</h1>
+          <section className={style['city-select']}>
+            <select onChange={(e) => this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
+              {cityOptionDOM}
+            </select>
+          </section>
+        </nav>
         <WeatherPage city={this.state.globalCurrentCity} />
       </div>
     )

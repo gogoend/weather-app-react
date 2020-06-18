@@ -1,0 +1,34 @@
+.wrap{
+    color:#fff;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+.weather-detail{
+    margin-left: 1em;
+}
+.weather-detail .describe{
+    display: flex;
+    align-items: baseline;
+}
+.weather-detail .describe .temperature{
+    font-size: 0.24rem;
+    margin-left: 0.5em;
+}
+.weather-detail .wind-info{
+    font-size: 0.18rem;
+}
+.weather-detail h1{
+    margin:0;
+    font-weight: normal;
+    font-size: 0.5rem;
+}
+.weather-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.weather-icon>*{
+    width: 100%;
+    height: 100%;
+}

@@ -1,10 +1,12 @@
 import React from 'react'
 
-import { get,post } from '../../api'
+import { get} from '../../api'
 import SingleWeatherInfo from '../../components/weather-page/single-weather-info'
 import MainWeatherInfo from '../../components/weather-page/main-weather-info'
 
-import style from './index.module.css'
+import style from '../../style/pages/weather-page/index.module.css'
+
+console.log(style)
 
 async function getWeather(cityCode) {
     let data = await get('http://restapi.amap.com/v3/weather/weatherInfo', {
@@ -34,6 +36,7 @@ export default class WeatherPage extends React.Component {
     }
 
     cacheInfo(city, info) {
+        /* eslint-disable-next-line */
         this.state.cachedInfo[city] = {
             updateTime: new Date().getTime(),
             info
@@ -68,6 +71,7 @@ export default class WeatherPage extends React.Component {
         let todayForecast=''
 
         if (weatherInfo && Array.isArray(weatherInfo.forecasts[0].casts)) {
+            /* eslint-disable-next-line */
             futureForecastDOM = weatherInfo.forecasts[0].casts.map((item, index) => {
                 if(index===0){
                     todayForecast = item
@@ -83,11 +87,11 @@ export default class WeatherPage extends React.Component {
 
         return (
             <>
-                <section className={style['weather-app-container']}>
+                <section>
                 <main>
                     <MainWeatherInfo weather-info={todayForecast}></MainWeatherInfo>
                 </main>
-                    <ul>
+                    <ul className={style['weather-info-list']}>
                         {futureForecastDOM}
                     </ul>
                 </section>
