@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { get} from '../../api'
+import { get } from '../../api'
 import SingleWeatherInfo from '../../components/weather-page/single-weather-info'
 import MainWeatherInfo from '../../components/weather-page/main-weather-info'
 
@@ -68,14 +68,14 @@ export default class WeatherPage extends React.Component {
         this.cityChange = this.cityChange.bind(this)
 
         let futureForecastDOM = []
-        let todayForecast=''
+        let todayForecast = ''
 
         if (weatherInfo && Array.isArray(weatherInfo.forecasts[0].casts)) {
             /* eslint-disable-next-line */
             futureForecastDOM = weatherInfo.forecasts[0].casts.map((item, index) => {
-                if(index===0){
+                if (index === 0) {
                     todayForecast = item
-                }else{
+                } else {
                     return (
                         <li key={index}>
                             <SingleWeatherInfo weather-info={item} />
@@ -88,12 +88,15 @@ export default class WeatherPage extends React.Component {
         return (
             <>
                 <section>
-                <main>
-                    <MainWeatherInfo weather-info={todayForecast}></MainWeatherInfo>
-                </main>
-                    <ul className={style['weather-info-list']}>
-                        {futureForecastDOM}
-                    </ul>
+                    <main>
+                        <MainWeatherInfo weather-info={todayForecast}></MainWeatherInfo>
+                    </main>
+                    <div className="future-three-day-weather">
+                        <header>近三天</header>
+                        <ul className={style['weather-info-list']}>
+                            {futureForecastDOM}
+                        </ul>
+                    </div>
                 </section>
             </>
         )
