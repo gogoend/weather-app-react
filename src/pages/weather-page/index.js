@@ -88,10 +88,10 @@ export default class WeatherPage extends React.Component {
         return (
             <>
                 <section>
-                    <main>
+                    <main className={style['block-wrap']}>
                         <MainWeatherInfo weather-info={todayForecast}></MainWeatherInfo>
                     </main>
-                    <div className="future-three-day-weather">
+                    <div className={`${style['future-three-day-weather']} ${style['block-wrap']}`}>
                         <header>近三天</header>
                         <ul className={style['weather-info-list']}>
                             {futureForecastDOM}

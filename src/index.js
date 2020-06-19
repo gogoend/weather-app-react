@@ -2,6 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
 
+((doc) => {
+    function recalc() {
+        let remBase = 100
+        if (doc.documentElement.clientWidth > 375) {
+            doc.documentElement.style.fontSize = `${remBase}px`
+        } else {
+            doc.documentElement.style.fontSize = remBase * ((doc.documentElement.clientWidth) / 375) + 'px'
+        }
+    }
+    var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+    window.addEventListener(resizeEvent, recalc, false);
+    window.addEventListener('DOMContentLoaded', recalc, false);
+})(document)
 ReactDOM.render(<App/>, document.getElementById('root'))
-
-document.documentElement.style.fontSize = '100px'

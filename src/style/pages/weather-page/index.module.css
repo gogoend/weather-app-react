@@ -1,3 +1,11 @@
+.future-three-day-weather{
+    margin: 0 auto;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1em;
+    box-sizing: border-box;
+}
+
 ul.weather-info-list {
     display: flex;
     justify-content: space-between;
@@ -8,4 +16,9 @@ ul.weather-info-list {
 
 ul.weather-info-list li {
     flex-basis: 33.33%
+}
+
+.block-wrap:not(:first-child){
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
