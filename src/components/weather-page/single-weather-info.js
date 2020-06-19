@@ -23,7 +23,7 @@ class SingleWeatherInfo extends React.Component {
             <div className={style["single-info"]}>
                 <h3 className={style["day"]}>
                     {new Date(item.date).getDate()}日
-                </h3>
+                                </h3>
                 <small className={style["week-date"]}>
                     周{item.week === '7' ? '日' : chineseDigi[item.week]}
                 </small>
@@ -36,9 +36,6 @@ class SingleWeatherInfo extends React.Component {
                 </dl>
             </div>
         )
-    }
-    componentWillReceiveProps(nextProps) {
-        this.render()
     }
 }
 

@@ -4,6 +4,7 @@ import WeatherPage from './pages/weather-page'
 import './style/reset.css'
 import style from './style/App.module.css'
 
+const { Provider, Consumer } = React.createContext()
 const cityList = [
   {
     city: '北京',
@@ -73,19 +74,26 @@ class App extends React.Component {
     let cityOptionDOM = cityList.map((item, index) => (<option key={index} value={item.code}>{item.city}</option>))
 
     return (
-      <div className={style['app-wrap']}>
-        <nav>
-          <h1>{this.state.globalCurrentCity.city}</h1>
-          <section className={style['city-select']}>
-            <select onChange={(e) => this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
-              {cityOptionDOM}
-            </select>
-          </section>
-        </nav>
-        <WeatherPage city={this.state.globalCurrentCity} />
-      </div>
+      <Provider value={{
+        globalCurrentCity:this.state.globalCurrentCity
+      }}>
+        <div className={style['app-wrap']}>
+          <nav>
+            <h1>{this.state.globalCurrentCity.city}</h1>
+            <section className={style['city-select']}>
+              <select onChange={(e) => this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
+                {cityOptionDOM}
+              </select>
+            </section>
+          </nav>
+          <WeatherPage city={this.state.globalCurrentCity} />
+        </div>
+      </Provider>
     )
   }
 }
 
+export {
+  Consumer
+}
 export default App
