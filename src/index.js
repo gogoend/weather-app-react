@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
+import { HashRouter as Router, Route} from 'react-router-dom'
 
 ((doc) => {
     function recalc() {
@@ -15,4 +16,9 @@ import App from './App.js'
     window.addEventListener(resizeEvent, recalc, false);
     window.addEventListener('DOMContentLoaded', recalc, false);
 })(document)
-ReactDOM.render(<App/>, document.getElementById('root'))
+ReactDOM.render(
+    <Router>
+        <Route path="/" component={App}></Route>
+        {/* <App/> */}
+    </Router>
+, document.getElementById('root'))

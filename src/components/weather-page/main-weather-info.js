@@ -21,26 +21,21 @@ class MainWeatherInfo extends React.Component {
         */
 
         return (
-                (value) => {
-                    console.log(value)
-                return (
-                <div className={style.wrap}>
-                    <aside className={style["weather-icon"]}>
-                        <SunnyIcon />
-                    </aside>
-                    <section className={style['weather-detail']}>
-                        <div className={style['describe']}>
-                            <h1>{weatherInfo.dayweather}</h1>
-                            <span className={style['temperature']}>{weatherInfo.daytemp}℃</span>
-                        </div>
-                        <div className={style['wind-info']}>
-                            {weatherInfo.daywind} {weatherInfo.daypower}
-                        </div>
-    
-                    </section>
-                </div>)
-                }
-        )
+        <div className={style.wrap}>
+            <aside className={style["weather-icon"]}>
+                <SunnyIcon />
+            </aside>
+            <section className={style['weather-detail']}>
+                <div className={style['describe']}>
+                    <h1>{weatherInfo.dayweather}</h1>
+                    <span className={style['temperature']}>{weatherInfo.daytemp}℃</span>
+                </div>
+                <div className={style['wind-info']}>
+                    {weatherInfo.daywind} {weatherInfo.daypower}
+                </div>
+            </section>
+        </div>)
+
     }
     
 }

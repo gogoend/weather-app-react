@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import {Route, Link } from 'react-router-dom'
 
 import WeatherPage from './pages/weather-page'
 import './style/reset.css'
@@ -68,6 +68,8 @@ class App extends React.Component {
     let cityCode = Number(e.target.value)
     this.setState({
       globalCurrentCity: getInfoById(cityList, cityCode, 'code')[0]
+    },()=>{
+      this.props.history.push(`/home/${this.state.globalCurrentCity.code}`)
     })
   }
   render() {
@@ -78,7 +80,6 @@ class App extends React.Component {
       <Provider value={{
         globalCurrentCity: this.state.globalCurrentCity
       }}>
-        <Router>
           <div className={style['app-wrap']}>
             <nav>
               <h1>{this.state.globalCurrentCity.city}</h1>
@@ -98,7 +99,6 @@ class App extends React.Component {
               <Link to="/city-info">城市信息</Link>
             </nav>
           </div>
-        </Router>
       </Provider>
     )
   }

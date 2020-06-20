@@ -32,7 +32,7 @@ export default class WeatherPage extends React.Component {
     }
     async componentWillMount() {
         // console.log(this.props)
-        await this.cityChange(this.props.city.code)
+        await this.cityChange(this.props.match.params.cityId)
     }
 
     cacheInfo(city, info) {
@@ -102,6 +102,6 @@ export default class WeatherPage extends React.Component {
         )
     }
     componentWillReceiveProps(nextProps) {
-        this.cityChange(nextProps.city.code)
+        this.cityChange(nextProps.match.params.cityId)
     }
 }
