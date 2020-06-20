@@ -34,5 +34,15 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html'
     })
-  ]
+  ],
+  devServer: {
+    proxy: {
+        '/covid-19-api': {
+            target: 'https://view.inews.qq.com/g2/getOnsInfo',
+            pathRewrite:{"^/covid-19-api":""},
+            changeOrigin: true,
+            secure: false
+        }
+    }
+}
 };
