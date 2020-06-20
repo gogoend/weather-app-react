@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 import WeatherPage from './pages/weather-page'
 import './style/reset.css'
@@ -75,19 +76,29 @@ class App extends React.Component {
 
     return (
       <Provider value={{
-        globalCurrentCity:this.state.globalCurrentCity
+        globalCurrentCity: this.state.globalCurrentCity
       }}>
-        <div className={style['app-wrap']}>
-          <nav>
-            <h1>{this.state.globalCurrentCity.city}</h1>
-            <section className={style['city-select']}>
-              <select onChange={(e) => this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
-                {cityOptionDOM}
-              </select>
-            </section>
-          </nav>
-          <WeatherPage city={this.state.globalCurrentCity} />
-        </div>
+        <Router>
+          <div className={style['app-wrap']}>
+            <nav>
+              <h1>{this.state.globalCurrentCity.city}</h1>
+              <section className={style['city-select']}>
+                <select onChange={(e) => this.globalCityChange(e)} value={this.state.globalCurrentCity.code}>
+                  {cityOptionDOM}
+                </select>
+              </section>
+            </nav>
+            {/* <Route path="/" exact component={WeatherPage} /> */}
+            <Route path="/home/:cityId" component={WeatherPage}></Route>
+            {/* <WeatherPage city={this.state.globalCurrentCity} /> */}
+            <nav>
+              <Link
+                to={`/home/${this.state.globalCurrentCity.code}`}
+              >天气</Link>
+              <Link to="/city-info">城市信息</Link>
+            </nav>
+          </div>
+        </Router>
       </Provider>
     )
   }

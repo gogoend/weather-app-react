@@ -2,8 +2,6 @@ import React from 'react'
 import style from '../../style/components/weather-page/main-weather-info.module.css'
 import { SunnyIcon } from '../../components/weather-page/embed-svg-icon/weather-icon.js'
 
-import { Consumer } from '../../App.js'
-
 class MainWeatherInfo extends React.Component {
     constructor() {
         super()
@@ -23,8 +21,6 @@ class MainWeatherInfo extends React.Component {
         */
 
         return (
-        <Consumer>
-            {
                 (value) => {
                     console.log(value)
                 return (
@@ -44,8 +40,6 @@ class MainWeatherInfo extends React.Component {
                     </section>
                 </div>)
                 }
-            }
-        </Consumer>
         )
     }
     
