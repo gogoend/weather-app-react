@@ -6,8 +6,6 @@ import MainWeatherInfo from '../../components/weather-page/main-weather-info'
 
 import style from '../../style/pages/weather-page/index.module.css'
 
-console.log(style)
-
 async function getWeather(cityCode) {
     let data = await get('http://restapi.amap.com/v3/weather/weatherInfo', {
         key: '516786aa1da89347ad99cc19c24488ac',
